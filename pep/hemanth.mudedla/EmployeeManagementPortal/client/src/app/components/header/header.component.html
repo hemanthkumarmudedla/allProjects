@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-raised-button routerLink="/">Employee Management Portal</button>
+        <span class="right-align"></span>
+        <div fxLayout="row" fxLayoutGap="15px" fxShow="false" fxShow.gt-sm *ngFor="let link of links">
+            <button mat-button routerLink="/{{link}}" routerLinkActive="active">{{link}}</button>
+        </div>
+        <button mat-button fxHide="false" fxHide.gt-sm (click)="isCollapsed = !isCollapsed">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row [fxHide]="isCollapsed" *ngFor="let link of links">
+        <button mat-button routerLink="/{{link}}" id="{{link}}" routerLinkActive="active">{{link}}</button>
+    </mat-toolbar-row>
+</mat-toolbar>

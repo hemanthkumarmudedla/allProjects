@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div>
+    <h1>This is Parent Component</h1>
+    <p>Parent Value : {{parentValue}}</p>
+    <p>Parent Counter : {{parentCounter}}</p>
+    <button class="btn btn-secondary m-3" (click)="changeCounter()">Change Counter</button>
+    <div class="container">
+        <app-child [childCounter]="parentCounter" (valueEvent)="receiveValue($event)"></app-child>
+    </div>
+</div>

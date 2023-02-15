@@ -1,0 +1,93 @@
+<div class="container" [formGroup]="studentRegistrationForm">
+    <h2>Student Registration Details</h2>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="firstName">First Name: </label>
+            <input id="firstName" class="w-100" type="text" formControlName="firstName">
+            <div class="text-danger" *ngIf="(firstName?.touched || firstName?.dirty) && firstName?.invalid">
+                <small *ngIf="firstName?.errors?.['required']">
+                    First Name is required.
+                </small>
+                <small *ngIf="firstName?.errors?.['maxlength']">
+                    First Name must be less than 25 characters long.
+                </small>
+                <small *ngIf="firstName?.errors?.['pattern']">
+                    First Name can only contain Alphabets.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="lastName">Last Name: </label>
+            <input id="lastName" class="w-100" type="text" formControlName="lastName">
+            <div class="text-danger" *ngIf="(lastName?.touched || lastName?.dirty) && lastName?.invalid">
+                <small *ngIf="lastName?.errors?.['required']">
+                    Last Name is required.
+                </small>
+                <small *ngIf="lastName?.errors?.['maxlength']">
+                    Last Name must be less than 25 characters long.
+                </small>
+                <small *ngIf="lastName?.errors?.['pattern']">
+                    Last Name can only contain Alphabets.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="username">Username: </label>
+            <input id="username" class="w-100" type="text" formControlName="username">
+            <div class="text-danger" *ngIf="(username?.touched || username?.dirty) && username?.invalid">
+                <small *ngIf="username?.errors?.['required']">
+                    Name is required.
+                </small>
+                <small *ngIf="username?.errors?.['maxlength']">
+                    Name must be at most 25 characters long.
+                </small>
+                <small *ngIf="username?.errors?.['usernameExists']">
+                    Name is already taken.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="password">Password: </label>
+            <input id="password" class="w-100" type="password" formControlName="password">
+            <div class="text-danger" *ngIf="(password?.touched || password?.dirty) && password?.invalid">
+                <small *ngIf="password?.errors?.['required']">
+                    Password is required.
+                </small>
+                <small *ngIf="password?.errors?.['minlength']">
+                    Password must be atleast 8 characters long.
+                </small>
+                <small *ngIf="password?.errors?.['pattern']">
+                    Password must contain atleast one Capital, one Small, one Special Character and one Digit
+                </small>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="mobileNo">Mobile No: </label>
+            <input id="mobileNo" class="w-100" type="text" formControlName="mobileNo">
+            <div class="text-danger" *ngIf="(mobileNo?.touched || mobileNo?.dirty) && mobileNo?.invalid">
+                <small *ngIf="mobileNo?.errors?.['required']">
+                    Mobile Number is required.
+                </small>
+                <small *ngIf="mobileNo?.errors?.['minlength'] || mobileNo?.errors?.['maxlength']">
+                    Mobile Number must be only 10 characters long.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-3">
+            <label for="dateOfBirth">Date Of Birth: </label>
+            <input class="form-control" bsDatepicker placeholder="yyyy-mm-dd" formControlName="dateOfBirth"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-green' }">
+            <small class="text-danger" *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid">
+                Date Of Birth is required.
+            </small>
+        </div>
+    </div>
+    <button type="submit" (click)="register()" class="btn btn-primary m-3"
+        [disabled]="studentRegistrationForm.invalid">Register</button>
+    <button class="btn btn-light m-3" routerLink="/login">Cancel</button>
+</div>

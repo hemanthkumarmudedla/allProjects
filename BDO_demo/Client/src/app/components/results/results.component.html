@@ -1,0 +1,4 @@
+<app-header></app-header>
+<h3 class="m-3">Score: {{score}}</h3>
+<small *ngIf="score<70" class="text-danger m-3">Sorry, you have failed in the Exam</small>
+<small *ngIf="score>=70" class="text-success m-3">Congratulations, You have passed in the Exam</small>
